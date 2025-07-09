@@ -1,50 +1,58 @@
-----------------------------------------
-#Script Name: Audio Transcription Script
-----------------------------------------
 
-Purpose:
-----------------------------------------
-This script recursively scans a specified directory for supported media files (such as MP3, WAV, MP4, etc.), transcribes the audio content to text using OpenAI's Whisper model, and saves the transcription as text files in the output directory.
+# Audio & Video Transcriber Using Python
 
+This project provides a simple Python script to automatically transcribe audio and video files to text using OpenAI's Whisper model. It recursively scans a specified input directory for supported media files, transcribes their content, and saves the results as text files in an output directory.
 
-Model Setup:
-----------------------------------------
-The script loads the smallest available Whisper model (tiny).
+---
 
-Supported Media Types:
-----------------------------------------
-The script supports the following media file extensions:
+## Features
 
-.mp3, .wav, .mp4, .m4a, .flac, .aac, .ogg, .wma, .mov, .avi, .mkv.
-Directory Traversal:
-It scans the given input directory recursively and processes all media files it finds.
+- **Automatic Transcription:** Converts speech in audio and video files to text using Whisper.
+- **Batch Processing:** Recursively scans folders and processes all supported files.
+- **Multiple Formats Supported:** Works with `.mp3`, `.wav`, `.mp4`, `.m4a`, `.flac`, `.aac`, `.ogg`, `.wma`, `.mov`, `.avi`, `.mkv` and more.
+- **Easy Output:** Saves each transcript as a `.txt` file named after the original media file.
 
-Transcription:
-----------------------------------------
-For each media file, it uses the Whisper model to transcribe the audio to text.
+---
 
-Output:
-----------------------------------------
-The transcribed text is saved as .txt files in the specified output directory. Each file is named based on the corresponding media file (with .txt extension).
+## Requirements
 
-How to Use:
-----------------------------------------
--Set the Input Directory:
-Update the input_directory variable to point to the folder containing your media files.
+- Python 3.11 or newer
+- [openai-whisper](https://github.com/openai/whisper) (`pip install openai-whisper`)
+- [ffmpeg](https://ffmpeg.org/) (required for many audio/video formats)
 
--Set the Output Directory:
-Update the output_directory variable to point to the folder where you want the transcriptions to be saved.
+---
 
--Run the Script:
-Execute the script. It will process all supported media files in the input directory, transcribe the audio, and save the results in the output folder.
+## Usage
 
-Requirements:
-----------------------------------------
-Python 3.11
-Whisper model installed (pip install openai-whisper)
-ffmpeg (for handling certain audio and video formats)
+1. **Set Input and Output Directories:**
+   - Edit the `input_directory` and `output_directory` variables in `audio_video_Transcriber.py` to point to your folders.
 
-Notes:
-----------------------------------------
-The script uses the smallest Whisper model (tiny) for faster transcription, but larger models may provide better accuracy.
-The script assumes that you have the necessary permissions to read files from the input directory and write to the output directory.
+2. **Install Dependencies:**
+   ```bash
+   pip install openai-whisper
+   # On Ubuntu/Debian:
+   sudo apt-get install ffmpeg
+   # Or use your OS package manager for ffmpeg
+   ```
+
+3. **Run the Script:**
+   ```bash
+   python audio_video_Transcriber.py
+   ```
+
+4. **Check Output:**
+   - Transcripts will be saved as `.txt` files in your output directory, named after each media file.
+
+---
+
+## Example
+
+Sample input and output files are provided in the `sample_input and output/` folder.
+
+---
+
+## Notes
+
+- The script uses the smallest Whisper model (`tiny`) for speed. For better accuracy, you can change the model in the script.
+- Make sure you have permission to read from the input directory and write to the output directory.
+- For large files or better accuracy, consider using a larger Whisper model (see [Whisper documentation](https://github.com/openai/whisper)).
